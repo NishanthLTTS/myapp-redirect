@@ -5,30 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
-        function openApp() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  function openApp() {
+    var appScheme = "myapp://home";
+    var playStoreIntent = "intent://details?id=com.bastianqrapp#Intent;scheme=market;package=com.android.vending;end;";
+    var playStoreWeb = "https://play.google.com/store/apps/details?id=com.bastianqrapp";
+    var appStoreLink = "itms-apps://apps.apple.com/app/id123456789"; 
 
-            if (/android/i.test(userAgent)) {
-                // Try opening the app
-                window.location.href = "myapp://home";
-                
-                // If the app is not installed, open Play Store after a delay
-                setTimeout(() => {
-                    window.location.href = "https://play.google.com/store/apps/details?id=com.bastianqrapp";
-                }, 1500);
-            } else if (/iPhone|iPad|iPod/.test(userAgent)) {
-                window.location.href = "myapp://home";
-                
-                // Open App Store if the app is not installed
-                setTimeout(() => {
-                    window.location.href = "https://apps.apple.com/app/id123456789";
-                }, 1500);
-            } else {
-                // Default fallback for non-mobile users
-                window.location.href = "https://myapp.com/home";
-            }
-        }
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
+    if (/android/i.test(userAgent)) {
+        // Try opening the app
+        window.location.href = appScheme;
+
+        // If app is not installed, redirect to Play Store
+        setTimeout(function () {
+            window.location.href = playStoreIntent;
+        }, 2000);
+    } 
+    else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+        // Try opening the app
+        window.location.href = appScheme;
+
+        // If app is not installed, redirect to App Store
+        setTimeout(function () {
+            window.location.href = appStoreLink;
+        }, 2000);
+    } 
+    else {
+        // Open the Play Store link in browser for other devices
+        window.location.href = playStoreWeb;
+    }
+}
         window.onload = openApp;
     </script>
 </head>
