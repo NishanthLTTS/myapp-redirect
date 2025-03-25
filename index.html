@@ -5,20 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
-        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        
         function openApp() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
             if (/android/i.test(userAgent)) {
-                window.location.href = "myapp://home";
+                // Try opening the app
+                window.location.href = "intent://home#Intent;scheme=myapp;package=com.bastianqrapp;end;";
+                
+                // If the app is not installed, open Play Store after a delay
                 setTimeout(() => {
                     window.location.href = "https://play.google.com/store/apps/details?id=com.bastianqrapp";
                 }, 1500);
-            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            } else if (/iPhone|iPad|iPod/.test(userAgent)) {
                 window.location.href = "myapp://home";
+                
+                // Open App Store if the app is not installed
                 setTimeout(() => {
                     window.location.href = "https://apps.apple.com/app/id123456789";
                 }, 1500);
             } else {
+                // Default fallback for non-mobile users
                 window.location.href = "https://myapp.com/home";
             }
         }
