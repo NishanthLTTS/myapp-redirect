@@ -10,7 +10,7 @@
 
             if (/android/i.test(userAgent)) {
                 // Try opening the app
-                window.location.href = "intent://home#Intent;scheme=myapp;package=com.example.testapp;end;";
+                window.location.href = "myapp: //home";
                 
                 // If the app is not installed, open Play Store after a delay
                 setTimeout(() => {
