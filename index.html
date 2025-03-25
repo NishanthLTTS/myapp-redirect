@@ -6,24 +6,33 @@
     <title>Redirecting...</title>
     <script>
         function openApp() {
-            var appLink = "myapp: //home";  // Your deep link
-            var playStoreLink = "https://play.google.com/store/apps/details?id=com.bastianqrapp"; // Replace with your package name
-           // var now = new Date().getTime();
-            
-            // Try opening the app
-            window.location.href = appLink;
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            // Fallback to Play Store if app is not installed
-            setTimeout(function () {
-               // var elapsed = new Date().getTime() - now;
-               // if (elapsed < 2000) { // Only redirect if the app didn't open
-                    window.location.href = playStoreLink;
-                //}
-            }, 1500);
+            if (/android/i.test(userAgent)) {
+                // Try opening the app
+                window.location.href = "myapp://home";
+                
+                // If the app is not installed, open Play Store after a delay
+                setTimeout(() => {
+                    window.location.href = "https://play.google.com/store/apps/details?id=com.bastianqrapp";
+                }, 1500);
+            } else if (/iPhone|iPad|iPod/.test(userAgent)) {
+                window.location.href = "myapp://home";
+                
+                // Open App Store if the app is not installed
+                setTimeout(() => {
+                    window.location.href = "https://apps.apple.com/app/id123456789";
+                }, 1500);
+            } else {
+                // Default fallback for non-mobile users
+                window.location.href = "https://myapp.com/home";
+            }
         }
+
+        window.onload = openApp;
     </script>
 </head>
-<body onload="openApp()">
+<body>
     <h2>Redirecting...</h2>
 </body>
 </html>
