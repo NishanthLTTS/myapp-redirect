@@ -6,7 +6,7 @@
     <title>Redirecting...</title>
     <script>
   function openApp() {
-    var appScheme = "myapp://home";
+    var appScheme = "myapp: //home";
     var playStoreIntent = "intent://details?id=com.bastianqrapp#Intent;scheme=market;package=com.android.vending;end;";
     var playStoreWeb = "https://play.google.com/store/apps/details?id=com.bastianqrapp";
     var appStoreLink = "itms-apps://apps.apple.com/app/id123456789"; 
@@ -19,8 +19,8 @@
 
         // If app is not installed, redirect to Play Store
         setTimeout(function () {
-            window.location.href = playStoreIntent;
-        }, 2000);
+            window.location.href = playStoreWeb;
+        }, 3000);
     } 
     else if (/iPhone|iPad|iPod/i.test(userAgent)) {
         // Try opening the app
