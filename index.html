@@ -15,11 +15,11 @@
 
     if (/android/i.test(userAgent)) {
         // Try opening the app
-        window.location.href = appScheme;
+        window.location.replace = appScheme;
 
         // If app is not installed, redirect to Play Store
         setTimeout(function () {
-            window.location.href = playStoreWeb;
+            window.location.replace = playStoreWeb;
         }, 3000);
     } 
     else if (/iPhone|iPad|iPod/i.test(userAgent)) {
