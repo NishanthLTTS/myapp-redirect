@@ -8,17 +8,17 @@
         function openApp() {
             var appLink = "myapp: //home";  // Your deep link
             var playStoreLink = "https://play.google.com/store/apps/details?id=com.bastianqrapp"; // Replace with your package name
-            var now = new Date().getTime();
+           // var now = new Date().getTime();
             
             // Try opening the app
             window.location.href = appLink;
 
             // Fallback to Play Store if app is not installed
             setTimeout(function () {
-                var elapsed = new Date().getTime() - now;
-                if (elapsed < 2000) { // Only redirect if the app didn't open
+               // var elapsed = new Date().getTime() - now;
+               // if (elapsed < 2000) { // Only redirect if the app didn't open
                     window.location.href = playStoreLink;
-                }
+                //}
             }, 1500);
         }
     </script>
