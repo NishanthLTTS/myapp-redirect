@@ -23,7 +23,10 @@
             setTimeout(function () {
                 if (/android/i.test(userAgent)) {
                     //window.location.href = playStoreWeb;
-                    window.location.href = "intent://play.google.com/store/apps/details?id=com.bastianqrapp#Intent;package=com.android.vending;scheme=https;end;";
+                    window.location.href = "https://play.google.com/store/apps/details?id=com.bastianqrapp";
+setTimeout(() => {
+  window.location.href = "market://details?id=com.bastianqrapp";
+}, 1000);
                 } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
                     window.location.href = appStoreLink;
                 } else {
