@@ -8,7 +8,7 @@
         function openApp() {
             var appScheme = "myapp://home"; // Ensure this matches your AndroidManifest.xml
             var playStoreWeb = "https://play.google.com/store/apps/details?id=com.bastianqrapp";
-            var appStoreLink = "https://apps.apple.com/app/id123456789"; // Replace with actual App Store link
+            var appStoreLink = "https://apps.apple.com/in/app/bastian-customer-parts-portal/id6473263265"; // Replace with actual App Store link
 
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
@@ -29,13 +29,13 @@
                 } else {
                     window.location.href = playStoreWeb;
                 }
-            }, 1000);
+            }, 2000);
         }
 
         window.onload = openApp;
     </script>
 </head>
 <body>
-    <p>Please wait we are taking you... </p>
+    <p>Redirecting... If nothing happens, <a href="myapp://open">click here</a>.</p>
 </body>
 </html>
